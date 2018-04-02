@@ -1,0 +1,41 @@
+---
+title: 'Project Euler - Problem 17: Number letter counts '
+author: An Chu
+date: '2017-04-22'
+slug: project-euler-problem-17-number-letter-counts
+categories:
+  - R
+tags:
+  - Euler
+---
+
+Problem 17 yêu cầu đếm số chứ cái sử dụng để viết 1000 số tự nhiên đầu tiên. Bài tập này trở nên đơn giản rất nhiều nhờ có package english của Bill Venables.
+
+
+```{r}
+library(english)
+english(123, UK = TRUE)
+```
+
+---
+If the numbers 1 to 5 are written out in words: one, two, three, four, five, then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total.
+
+If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, how many letters would be used?
+---
+
+Đáp án: 21124
+
+```{r}
+## convert numbers to words
+numbers <- lapply(1:1000, english, UK = TRUE)
+
+## remove white spaces
+numbers <- lapply(numbers, function(x) gsub(" ", "", x))
+
+## count number of letters in each words
+numbers <- lapply(numbers, nchar)
+
+## total number of letters used
+Reduce(sum, numbers) # 21124
+```
+

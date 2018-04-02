@@ -1,0 +1,45 @@
+---
+title: 'Store closings with bar charts '
+author: An Chu
+date: '2017-04-23'
+slug: store-closings-with-bar-charts
+categories:
+  - R
+tags:
+  - data viz
+---
+
+
+
+<p>Bob Rudis recently introduced a “gem” from The Wall Street <a href="https://rud.is/b/2017/04/21/shuttering-pies-with-retiring-stores/">Journal</a> which describes a retail trend of store closures for 2017 in America. The visualization uses pie charts to show the relative percentage of each store closing. I agree with Bob that it is hard to have a fair comparison between stores as there’s no sensible order of the stores and so much clutters poping out.</p>
+<p>Here’s my redesign using bar charts. <img src="/post/img/2017-04-23-store-closings-with-bar-charts/store_closing.png" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>stores &lt;- read.csv(&quot;~/stores.csv&quot;, stringsAsFactors = F)
+stores &lt;- within(stores, perct &lt;- round(closing * 100 / total))
+stores &lt;- stores[order(stores$perct), ]
+closed_col &lt;- rgb(139, 0, 0, max = 255,  alpha = 200)
+
+png(&quot;~/store_closing.png&quot;, 866, 378, res = 96)
+par(mfrow = c(1, 2),
+    mar = c(1, 1, 1, 1),
+    oma = c(2, 7, 4, 1),
+    bg = &quot;gray98&quot;,
+    family = &quot;Lato&quot;,
+    cex.axis = 0.8,
+    col.axis = &quot;gray30&quot;)
+barplot(stores$total, names.arg = stores$store, border = F, horiz = T, las = 1,
+        cex.names = 0.9, axes = F)
+barplot(stores$closing, border = F, axes = F, col = closed_col, add = T, horiz = T)
+grid(NULL, NA, col = &quot;gray98&quot;, lty = 1)
+axis(1, col = &quot;gray98&quot;, col.ticks = &quot;gray30&quot;)
+legend(&quot;topright&quot;, legend = c(&quot;closing&quot;, &quot;remaining&quot;), col = c(closed_col, &quot;gray&quot;),
+       pch = 15, bty = &quot;n&quot;, text.col = &quot;gray30&quot;)
+barplot(rep(100, 12), border = F, horiz = T, axes = F)
+barplot(stores$perct, border = F, axes = F, col = closed_col, add = T, horiz = T)
+grid(NULL, NA, col = &quot;gray98&quot;, lty = 1)
+axis(1, col = &quot;gray98&quot;, col.ticks = &quot;gray30&quot;,
+     at = seq(0, 100, 20), labels = paste0(seq(0, 100, 20), &quot;%&quot;))
+mtext(&quot;Selected 2017 store closings, estimated&quot;, outer = T, line = 2.5, adj = 0,
+      font = 2, cex = 1.1)
+mtext(&quot;Smaller specialty chains such as Bebe and American Apparel are closing their stores,\nwhile lareger chains such as J.C. Penny and Sears are scaling back their footprint.&quot;,
+      outer = T, line = 0.5, adj = 0, family = &quot;Lato Light&quot;, cex = 0.9)
+dev.off()</code></pre>
