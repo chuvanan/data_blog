@@ -15,6 +15,10 @@ tags:
 <pre class="r"><code>library(english)
 english(123, UK = TRUE)</code></pre>
 <pre><code>## [1] one hundred and twenty three</code></pre>
+<hr />
+<p>If the numbers 1 to 5 are written out in words: one, two, three, four, five, then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total.</p>
+<p>If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, how many letters would be used?</p>
+<hr />
 <p>Đáp án: 21124</p>
 <pre class="r"><code>## convert numbers to words
 numbers &lt;- lapply(1:1000, english, UK = TRUE)
