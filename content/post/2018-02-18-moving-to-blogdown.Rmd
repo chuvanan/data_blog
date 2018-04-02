@@ -1,0 +1,18 @@
+---
+title: Moving to blogdown
+author: An Chu
+date: '2018-02-18'
+slug: moving-to-blogdown
+---
+
+I have used several blogging plattforms over the years, but none of them made me
+satisfied. The most recent one is jekyll which is good for most of my demands
+but it's somewhat buggy. And I hate dealing with Ruby's dependencies.
+
+
+I've now moved to `blogdown`, a new platform for static site blogging created by
+Yihui Xie - author of the some popular R packages: `knitr`, `bookdown`, etc.
+
+
+I've heard about this project since its early days and my first impression was
+pretty good. `blogdown` is now mature, it's time for me.

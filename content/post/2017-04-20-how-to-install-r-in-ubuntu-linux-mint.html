@@ -1,0 +1,40 @@
+---
+title: 'How to install R in Ubuntu/Linux Mint '
+author: An Chu
+date: '2017-04-20'
+slug: how-to-install-r-in-ubuntu-linux-mint
+categories: []
+tags:
+  - R
+  - Ubuntu
+  - Linux Mint
+---
+
+
+
+<p>Một trong những lý do tôi chuyển từ hệ điều hành Windows sang dùng Ubuntu (và bây giờ là Linux Mint - một distro khác phát triển trên codebase của Ubuntu) là vì R không chưa hỗ trợ tiếng Việt cho Windows. Khi phải thường xuyên làm việc với dữ liệu liên quan đến text, bạn sẽ thấy điều đó khó chịu như thế nào.</p>
+<p>Bài hướng dẫn này là dành cho các bạn mới chuyển sang dùng hệ điều hành Ubuntu hoặc Linux Mint và bạn có nhu cầu sử dụng R làm phân tích dữ liệu. Đã từng vài lần cài đặt R trên Ubuntu/Linux Mint, tôi nghĩ là sẽ có một chút khó khăn đối với người mới bắt đầu hệ điều hành này.</p>
+<p>Tôi giả định là bạn đã biết cơ bản về sử dụng Terminal.</p>
+<div id="buc-1-thit-lp-apt-advanced-packaging-tool" class="section level2">
+<h2>Bước 1: Thiết lập APT (Advanced Packaging Tool)</h2>
+<p>APT là một chương trình giúp quản lý việc cài đặt (và gỡ bỏ) các thư viện sử dụng bởi hệ điều hành. Ubuntu/Linux Mint có 1 file đặc biệt dùng để lưu địa chỉ repositories của các thư viện đó. File đó là <code>/etc/apt/source.list</code>. Chúng ta cần đưa địa chỉ repository của R vào danh sách này để có thể tải R về máy (và sau này là update phiên bản mới nhất của R). Bạn gõ câu lệnh sau vào Terminal:</p>
+<pre class="bash"><code>sudo xed /etx/apt/source.list</code></pre>
+<p>Từ phiên bản 18, các desktop environment khác nhau của Linux Mint đều dùng chung một text editor là xed. Đối với các bạn dùng Ubuntu, thay xed bằng gedit. Sau đó các bạn copy đoạn sau vào cuối file:</p>
+<pre class="bash"><code>sudo deb https://cloud.r-project.org/bin/linux/ubuntu xenial/</code></pre>
+<p>Như trường hợp ở đây, tôi đã chọn giúp bạn CRAN mirror là <a href="https://cloud.r-project.org" class="uri">https://cloud.r-project.org</a>. Bạn thay xenial bằng mã phiên bản (codename) của hệ điều hành mà bạn đang sử dụng, tôi đang sử dụng hệ điều hành Linux Mint 18.1, dựa trên codebase của Ubuntu 16.04 LTS (Xenial Xerus). Cần lưu ý các packages của R chỉ được hỗ trợ đầy đủ trên các phiên bản LTS của Ubuntu. Bảng dưới là codename của các releases gần đây của Ubuntu/Linux Mint:</p>
+<p>Để authenticate các thư viên tải về bằng APT, chúng ta cần thêm public key của R.</p>
+<pre class="bash"><code>sudo apt-key adv –keyserver keyserver.ubuntu.com –recv-keys E084DAB9
+sudo gpg -a –export E084DAB9 | sudo apt-key add –</code></pre>
+<p>Khi việc thiết lập địa chỉ repo đã hoàn thành (không bị báo lỗi gì), bạn bắt đầu có thể cài R.</p>
+<p>Đầu tiên, chúng ta cần cập nhật danh mục thư viện vì chúng ta vừa thêm vào thư mục mới của R.</p>
+</div>
+<div id="buc-2-cai-t-r" class="section level2">
+<h2>Bước 2: Cài đặt R</h2>
+<p>Khi việc thiết lập địa chỉ repo đã hoàn thành (không bị báo lỗi gì), bạn bắt đầu có thể cài R.</p>
+<p>Đầu tiên, chúng ta cần cập nhật danh mục thư viện vì chúng ta vừa thêm vào thư mực mới của R.</p>
+<pre class="bash"><code>sudo apt update
+sudo apt upgrade</code></pre>
+<p>Sau đó là cài đặt 2 thư viện chính của R sau đây:</p>
+<pre class="bash"><code>sudo apt install r-base r-base-devel</code></pre>
+<p>r-base là bộ mã nguồn của R, còn r-base-dev là thư viên giúp hỗ trợ việc cài đặt các R packages không có trên repository của Ubuntu. Khi quá trình cài đặt hoàn tất, bạn có thể gọi R từ Terminal để kiểm tra, nếu R console (như màn hình sau) hiện ra, bạn đã hoàn thành việc cài đặt R. Congrats!</p>
+</div>
