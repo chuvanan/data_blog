@@ -1,0 +1,49 @@
+---
+title: 'Project Euler - Problem 22: Names scores '
+author: An Chu
+date: '2017-04-21'
+slug: project-euler-problem-22-names-scores
+categories:
+  - R
+tags:
+  - Euler
+---
+
+Khi có thời gian rảnh, tôi thường lên project Euler (https://projecteuler.net) giải một số bài tập trên này, vừa để giết thời gian, vừa tranh thủ luyện tập programming và kỹ năng logic.
+
+Problem 22 dưới đây là một case khá hay để áp dụng functional programming trong R để xử lý dữ liệu.
+
+---
+
+Using names.txt, a 46K text file containing over five-thousand first names, begin by sorting it into alphabetical order. Then working out the alphabetical value for each name, multiply this value by its alphabetical position in the list to obtain a name score.
+
+For example, when the list is sorted into alphabetical order, COLIN, which is worth 3 + 15 + 12 + 9 + 14 = 53, is the 938th name in the list. So, COLIN would obtain a score of 938 × 53 = 49714.
+
+What is the total of all the name scores in the file?
+
+---
+
+Đáp án: 871198282
+
+Phần triển khai lời giải của tôi bằng R.
+
+```{r, eval=FALSE}
+names_txt <- readLines("p022_names.txt")
+
+names_txt <- strsplit(names_txt, split = ",")[[1]] # sepeate words
+names_txt <- gsub('\"', "", names_txt)
+names_txt <- names_txt[order(names_txt)] # alphabetical ordering
+names_txt <- strsplit(names_txt, "")    # sepeate letters
+
+letters_dict <- setNames(1:length(LETTERS), LETTERS)
+
+# replace letters by numbers
+names_txt <- lapply(names_txt, function(x) letters_dict[x])
+# sum of letters scores
+names_txt <- lapply(names_txt, function(x) Reduce(sum, as.integer(x)))
+
+## calculate sum of all names scores
+out <- mapply(prod, 1:length(names_txt), names_txt)
+sum(out) # 871198282
+```
+
