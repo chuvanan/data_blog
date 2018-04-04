@@ -1,0 +1,29 @@
+---
+title: Pretty fonts for R
+author: An Chu
+date: '2018-04-04'
+slug: pretty-fonts-for-r
+categories:
+  - R
+tags:
+  - R
+  - fonts
+---
+
+
+
+<p>I’ve just stumbled upon this <a href="https://www.miskatonic.org/2014/10/17/prettifying-r-in-emacs/">post</a> by William Denton, and quickly wondered how I could have missed Emacs’s feature <code>prettify-symbols-mode</code> which had been released more than three years ago.</p>
+<p>Some operators (<code>%&gt;%</code>, <code>&lt;-</code>, <code>-&gt;</code>) in R wasn’t very eyepleasing, especially in Emacs, so I added this to my Emacs config:</p>
+<pre class="elisp"><code>(when (boundp &#39;global-prettify-symbols-mode)
+  (add-hook &#39;ess-mode-hook
+            (lambda ()
+              (push &#39;(&quot;%&gt;%&quot; . ?→) prettify-symbols-alist)
+              ))
+  (add-hook &#39;inferior-ess-mode-hook
+            (lambda ()
+              (push &#39;(&quot;%&gt;%&quot; . ?→) prettify-symbols-alist)
+              ))
+  (global-prettify-symbols-mode +1))</code></pre>
+<p>Here’s the result, looking much neater.</p>
+<p><img src="/post/img/2018-04-04-pretty-fonts-for-r/pretty_code.png" style="display: block; margin: auto;" /></p>
+<p>For RStudio users, you might want to try out <code>Fira Code</code> or <code>Hasklig</code> - they are code fonts with monospaced ligatures.</p>
