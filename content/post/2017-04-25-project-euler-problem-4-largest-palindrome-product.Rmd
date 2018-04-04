@@ -1,0 +1,44 @@
+---
+title: 'Project Euler - Problem 4: Largest palindrome product '
+author: An Chu
+date: '2017-04-25'
+slug: project-euler-problem-4-largest-palindrome-product
+categories:
+  - R
+tags:
+  - Euler
+---
+
+Problem 4 giới thiệu về thuật ngữ palindrome. Một từ/số dù đọc ngược hay xuôi đều giống nhau đuợc gọi là palindrome. Ví dụ: 1001 hoặc Hannah
+
+Yêu cầu của p4 là tìm số palindrome lớn nhất tạo ra từ tích của 2 số có 3 chữ số. Tôi giải bài toán này thuần túy từ góc độ tính toán.
+
+---
+
+A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+
+Find the largest palindrome made from the product of two 3-digit numbers.
+
+---
+
+Đầu tiên cần có phương pháp kiểm tra một số có phải palindrome. Với R, có thể thử bằng cách kiểm tra hai vector x và rev(x) có trùng nhau không.
+
+```{r}
+is_palindrome <- function(x) {
+  x <- strsplit(as.character(x), split = "")[[1]]
+  identical(x, rev(x))
+}
+
+is_palindrome(1001)
+
+is_palindrome(1002)
+```
+
+Sử dụng expand.grid() tôi tính toán tích của tất cả các số có 3 chữ số rồi tìm số palindrome lớn nhất trong tất cả tích tạo ra. Kết quả là: 906609
+
+```{r}
+dtf <- expand.grid(v1 = 100:999, v2 = 100:999)
+product <- mapply(prod, dtf$v1, dtf$v2)
+max(product[vapply(product, is_palindrome, logical(1))])
+```
+
