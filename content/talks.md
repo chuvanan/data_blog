@@ -1,6 +1,6 @@
 ---
 title: "Talks"
-date: "2018-04-06T21:48:51-07:00"
+date: "2018-04-05T21:48:51-07:00"
 ---
 
 * [Hanoi UseR! Meetup 04/2017](https://speakerdeck.com/chuvanan/intro-vis)
