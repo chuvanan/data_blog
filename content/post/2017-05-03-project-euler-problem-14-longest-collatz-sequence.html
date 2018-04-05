@@ -1,0 +1,77 @@
+---
+title: 'Project Euler - Problem 14: Longest Collatz sequence '
+author: An Chu
+date: '2017-05-03'
+slug: project-euler-problem-14-longest-collatz-sequence
+categories:
+  - R
+tags:
+  - Euler
+---
+
+
+
+<hr />
+<p>The following iterative sequence is defined for the set of positive integers:</p>
+<p>n → n/2 (n is even)</p>
+<p>n → 3n + 1 (n is odd)</p>
+<p>Using the rule above and starting with 13, we generate the following sequence:</p>
+<p>13 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1</p>
+<p>It can be seen that this sequence (starting at 13 and finishing at 1) contains 10 terms. Although it has not been proved yet (Collatz Problem), it is thought that all starting numbers finish at 1.</p>
+<p>Which starting number, under one million, produces the longest chain?</p>
+<p>NOTE: Once the chain starts the terms are allowed to go above one million.</p>
+<hr />
+<p>Let build a simple function to generate a Collatz sequence given a starting number.</p>
+<pre class="r"><code>collatz_seq &lt;- function(n) {
+  out &lt;- vector(&quot;integer&quot;)
+  while (n != 1) {
+    out &lt;- c(out, n)
+    n &lt;- if (n %% 2 == 0) n/2 else 3*n + 1
+  }
+  c(out, 1)
+}
+
+collatz_seq(13)</code></pre>
+<pre><code>##  [1] 13 40 20 10  5 16  8  4  2  1</code></pre>
+<pre class="r"><code>lapply(1:10, collatz_seq) # first ten numbers</code></pre>
+<pre><code>## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 2 1
+## 
+## [[3]]
+## [1]  3 10  5 16  8  4  2  1
+## 
+## [[4]]
+## [1] 4 2 1
+## 
+## [[5]]
+## [1]  5 16  8  4  2  1
+## 
+## [[6]]
+## [1]  6  3 10  5 16  8  4  2  1
+## 
+## [[7]]
+##  [1]  7 22 11 34 17 52 26 13 40 20 10  5 16  8  4  2  1
+## 
+## [[8]]
+## [1] 8 4 2 1
+## 
+## [[9]]
+##  [1]  9 28 14  7 22 11 34 17 52 26 13 40 20 10  5 16  8  4  2  1
+## 
+## [[10]]
+## [1] 10  5 16  8  4  2  1</code></pre>
+<p>One issue comes with the above implementation is that we have a growing objects1 out. This is inevitable because we don’t know when the Collatz sequence will converge, so the length of the final out is unknown. The cost is rising memory consumption which is eating up my humble computer’s RAM very quickly.</p>
+<pre class="r"><code>seq_size &lt;- lapply(1:100000, function(x) {s &lt;- collatz_seq(x); pryr::object_size(s)})
+plot(1:100000, cumsum(seq_size)/1e6, type = &quot;l&quot;)</code></pre>
+<p><img src="/post/img/2017-05-03-project-euler-problem-14-longest-collatz-sequence/mem_used.png" style="display: block; margin: auto;" /></p>
+<p>For this kind of computation, we can make use of parallel processing:</p>
+<pre class="r"><code>library(parallel)
+n_cores &lt;- detectCores()
+cl &lt;- makeCluster(n_cores)
+col_seq &lt;- parLapply(cl, 1:1e6, collatz_seq)
+col_seq &lt;- vapply(col_seq, length, integer(1))
+which.max(col_seq)
+## 837799</code></pre>
