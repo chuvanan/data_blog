@@ -17,7 +17,7 @@ by William Denton, and quickly wondered how I could have missed Emacs's feature
 Some operators (`%>%`, `<-`, `->`) in R wasn't very eyepleasing, especially in
 Emacs, so I added this to my Emacs config:
 
-```elisp
+```lisp
 (when (boundp 'global-prettify-symbols-mode)
   (add-hook 'ess-mode-hook
             (lambda ()

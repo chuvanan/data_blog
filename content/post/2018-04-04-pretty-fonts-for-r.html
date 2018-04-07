@@ -14,7 +14,7 @@ tags:
 
 <p>I’ve just stumbled upon this <a href="https://www.miskatonic.org/2014/10/17/prettifying-r-in-emacs/">post</a> by William Denton, and quickly wondered how I could have missed Emacs’s feature <code>prettify-symbols-mode</code> which had been released more than three years ago.</p>
 <p>Some operators (<code>%&gt;%</code>, <code>&lt;-</code>, <code>-&gt;</code>) in R wasn’t very eyepleasing, especially in Emacs, so I added this to my Emacs config:</p>
-<pre class="elisp"><code>(when (boundp &#39;global-prettify-symbols-mode)
+<pre class="lisp"><code>(when (boundp &#39;global-prettify-symbols-mode)
   (add-hook &#39;ess-mode-hook
             (lambda ()
               (push &#39;(&quot;%&gt;%&quot; . ?→) prettify-symbols-alist)
