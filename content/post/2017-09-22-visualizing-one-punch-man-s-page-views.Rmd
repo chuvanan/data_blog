@@ -1,0 +1,98 @@
+---
+title: 'Visualizing One-punch Man''s page views '
+author: An Chu
+date: '2017-09-22'
+slug: visualizing-one-punch-man-s-page-views
+categories:
+  - R
+tags:
+  - data viz
+---
+
+```{r, fig.align="center", echo=FALSE}
+knitr::include_graphics("/post/img/2017-09-22-visualizing-one-punch-man-s-page-views/OnePunchMan_manga_cover.png")
+```
+
+I am a long-time [One-punch Man](https://en.wikipedia.org/wiki/One-Punch_Man)
+fanboy.  In case you didn't know, it is a Japanese superhero webcomic - a type
+of comic book that published online. Though I am not a regular reader of this
+genre, this action-comedy book really got my addiction.
+
+I first read this comic strip in late 2012 when its debut chapter in Vietnamese
+released on manag24h.com and have kept up with the series from then on.
+
+The book features Saitama, an ordinary man turned into a superhero, who is known
+for his incredible strength, in fact, he can easily defeat any monsters with a
+single punch.
+
+It is ironic that he is so extremely overpowered that he is no longer able to
+gain any thrill of battling and has become quite bored. In the words of
+psychological terminology, Saitama is facing a self-imposed existential crisis
+:). So the series is a funny story depicting his search of heroic deeds. If you
+are curious, you can give it a try [here](http://truyentranhtuan.com/onepunch-man/).
+
+Like many other popular anime series, namely One Piece, Naruto, etc. One-punch
+Man is characterized with weeks long release cycle. Four years has passed, the
+webcomis has published only 114 chapters. I wonder how many readers who are
+still following the series. As a little experiment, I write a scrapping script
+in R to collect the webcomic's realease dates as well as page-views by chapter
+and visualise the trend of readership over the course of the series.
+
+```{r, fig.align="center", echo=FALSE, out.width="120%"}
+knitr::include_graphics("/post/img/2017-09-22-visualizing-one-punch-man-s-page-views/gg_onepunch.png")
+```
+
+```{r, eval=FALSE}
+## --------------------------------------------------
+## scrap data from manag24h.me
+
+library(rvest)
+library(ggplot2)
+
+opm_url <- "http://manga24h.me/Onepunch-Man.htm"
+opm <- read_html(opm_url)
+
+chap_names <- opm %>%
+    html_nodes(xpath = "//div[@class='col-md-5 col-xs-8 chap_name']") %>%
+    html_text()
+chap_names <- trimws(chap_names, which = "both")
+
+chap_dates <- opm %>%
+    html_nodes(xpath = "//span[@class='chap-date']") %>%
+    html_text()
+chap_dates <- chap_dates[chap_dates != "" & !grepl("[a-z]", chap_dates)]
+
+chap_views <- opm %>%
+    html_nodes(xpath = "//span[@class='chap-views']") %>%
+    html_text()
+chap_views <- trimws(chap_views)
+
+onepunch <- data.frame(chap_names, chap_dates, chap_views,
+                       stringsAsFactors = FALSE)
+onepunch$chap_dates <- as.Date(onepunch$chap_dates, "%d/%m/%Y")
+onepunch <- onepunch[order(onepunch$chap_dates), ]
+onepunch$chap_views <- as.numeric(onepunch$chap_views)
+
+## --------------------------------------------------
+## visualise data
+
+ggplot(onepunch, aes(chap_dates, chap_views/1000)) +
+    geom_smooth(method = "loess", se = F, color = "royalblue", span = 0.3) +
+    geom_point(shape = 21, color = "gray", size = 2, bg = "red4", alpha = 0.8) +
+    annotate("text", x = as.Date("2012-12-26"), y = 265,
+             label = "Chap 1 released", size = 3.5) +
+    annotate("text", x = as.Date("2013-02-03"), y = 416,
+             label = "Chap Special", size = 3.5) +
+    annotate("text", x = as.Date("2013-12-02"), y = 185,
+             label = "Chap Bonus", size = 3.5) +
+    annotate("text", x = as.Date("2017-05-03"), y = 32,
+             label = "Chap 109", size = 3.5) +
+    labs(x = "chapter's release dates",
+         y = "chapter views (in thousand)",
+         title = "No more Superhero Lure: Number of One-punch Man's readers decreasing",
+         subtitle = "Measured by pageviews on manga24h.com") +
+    theme(text = element_text(family = "Lato"),
+          plot.title = element_text(face = 2))
+
+ggsave("/gg_onepunch.png", width = 7.083333, height = 4.644029, units = "in")
+```

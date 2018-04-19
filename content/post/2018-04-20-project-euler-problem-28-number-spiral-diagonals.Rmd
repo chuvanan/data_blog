@@ -1,0 +1,60 @@
+---
+title: 'Project Euler - Problem 28: Number spiral diagonals '
+author: An Chu
+date: '2017-07-17'
+categories:
+  - R
+tags:
+  - Euler
+slug: project-euler-problem-28-number-spiral-diagonals
+---
+
+
+---
+
+Starting with the number 1 and moving to the right in a clockwise direction a 5
+by 5 spiral is formed as follows:
+
+**21** 22 23 24 **25**
+
+20 **7** 8 **9** 10
+
+19 6 **1** 2 11
+
+18 **5** 4 **3** 12
+
+**17** 16 15 14 **13**
+
+It can be verified that the sum of the numbers on the diagonals is 101.  What is
+the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed in the
+same way?
+
+---
+
+There is a pattern of the numbers on the diagonals if I represent the spiral as
+a straight vector:
+
+
+**1**
+
+2 **3** 4 **5** 6 **7** 8 **9**
+
+10 11 12 **13** 14 15 16 **17** 18 19 20 **21** 22 23 24 **25**
+
+The step of each row is 2, 4, 6..., and the number of row is (n-1)/2. Using this
+information we can contruct the index of the diagonals of the spiral 1:(n*n).
+
+
+```{r}
+sum_spiral_diag <- function(n) {
+    stopifnot(n %% 2 != 0)
+    if (n > 1e5) stop("n too big")
+    s <- 1:(n*n)
+    i <- seq(2, length.out = (n-1)/2, by = 2)
+    i <- rep(i, each = 4)
+    i <- cumsum(c(1, i))
+    sum(as.numeric(s[i]))
+}
+
+sum_spiral_diag(1001)
+```

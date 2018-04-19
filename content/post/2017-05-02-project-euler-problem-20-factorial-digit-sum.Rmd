@@ -1,0 +1,51 @@
+---
+title: 'Project Euler - Problem 20: Factorial digit sum '
+author: An Chu
+date: '2017-05-02'
+slug: project-euler-problem-20-factorial-digit-sum
+categories:
+  - R
+tags:
+  - Euler
+---
+
+---
+
+n! means n × (n − 1) × ... × 3 × 2 × 1
+
+For example, 10! = 10 × 9 × ... × 3 × 2 × 1 = 3628800, and the sum of the digits
+in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
+
+Find the sum of the digits in the number 100!
+
+---
+
+When working with BIG numbers, R is (often) not that good. `options(digits)`
+allows only the maximum of 22 digits.
+
+
+```{r}
+factorial(100)
+as.character(factorial(100))
+```
+
+Even bit64 integer can't handle BIG numbers.
+
+```{r}
+bit64::as.integer64(factorial(100))
+```
+
+Fortunately, package gmp provides an object of class bigz that handles large
+numbers pretty well.
+
+```{r}
+result <- gmp::factorialZ(100)
+result <- as.character(result)
+result <- strsplit(result, "")
+result <- as.integer(unlist(result))
+result
+```
+
+```{r}
+Reduce(sum, result)
+```

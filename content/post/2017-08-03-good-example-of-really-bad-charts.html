@@ -1,0 +1,59 @@
+---
+title: 'Good example of (really) bad charts '
+author: An Chu
+date: '2017-08-03'
+slug: good-example-of-really-bad-charts
+categories:
+  - R
+tags:
+  - data viz
+---
+
+
+
+<p>Đã từng gặp phải khá nhiều biểu đồ “xấu” trong các ấn phẩm báo chí, tạp chí, sách in xuất bản tại Việt Nam, nhưng tôi vẫn phải kinh ngạc trước mức độ “tệ” của hai biểu đồ sau đây:</p>
+<p><img src="/post/img/2017-08-03-good-example-of-really-bad-charts/bad_chart.png" style="display: block; margin: auto;" /></p>
+<p>Kinh ngạc không chỉ bởi vì cách tác giả trình bày dữ liệu với biểu đồ, mà còn vì các biểu đồ này thuộc một bài “nghiên cứu khoa học” của hai giáo sư giảng dạy tại khoa thống kê của Đại học <a href="http://www.khoathongke.neu.edu.vn/ViewNCKH.aspx?ID=43">Kinh tế quốc dân</a>.</p>
+<p>Vậy hai biểu đồ trên tệ ở chỗ nào? Chỉ cần tìm hiểu cơ bản về các nguyên tắc thiết kế <a href="http://tuanvannguyen.blogspot.com.au/2013/03/bieu-o-trong-bai-bao-khoa-hoc-1-nguyen.html">data visualization</a>, cũng có thể chỉ ra các lỗi sau:</p>
+<ul>
+<li><p>không có title, không rõ tác muốn nói đến chủ đề gì?</p></li>
+<li><p>không có source, không rõ tác giả lấy dữ liệu từ nguồn nào?</p></li>
+<li><p>sử dụng màu sắc tùy tiện để encode data, legend chỉ có 2 nhóm là Di cư đến và Di cư đi nhưng có tới 8 màu đuợc sử dụng (tôi sẽ lấy biểu đồ này để làm ví dụ minh họa cho nguyên tắc chọn màu sắc của Edward Tufte: <em>Above all, do no harm</em>)</p></li>
+<li><p>phương pháp thiết kế biểu đồ sai, so sánh dữ liệu của 2 giai đọan nhưng lại không đặt cùng trong một biểu đồ với thang đo (yaxis scale) nhất quán, nên việc sử dụng đồ họa không còn giá trị do không thể so sánh.</p></li>
+</ul>
+<p>Với bộ dữ liệu này, tôi nghĩ có nhiều cách để thiết kế, và phương án đầu tiên mà tôi nghĩ tới là small multiples, tương tự như cách làm tham khảo ở <a href="http://lmdvr.r-forge.r-project.org/figures/figures.html">đây</a></p>
+<p><img src="/post/img/2017-08-03-good-example-of-really-bad-charts/redesign.png" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>library(reshape2)
+library(lattice)
+
+dicu &lt;- data.frame(
+    region = rep(c(&quot;BTB và DH miền Trung&quot;, &quot;ĐB sông Hồng&quot;, &quot;ĐB sông Cửu Long&quot;,
+                   &quot;Trung du và MNPB&quot;, &quot;Tây Nguyên&quot;, &quot;Đông Nam Bộ&quot;), times = 2),
+    type = rep(c(&quot;Di cư đến&quot;, &quot;Di cư đi&quot;), each = 6),
+    period_1994_1999 = c(114000, 163000, 67000, 84000, 326000, 580000,
+                         425000, 333000, 211000, 180000, 60000, 125000),
+    period_2004_2009 = c(110000, 289000, 70000, 91000, 166000, 1635000,
+                         775000, 331000, 734000, 271000, 125000, 125000),
+    stringsAsFactors = F
+)
+
+dicu &lt;- melt(dicu,
+             id.vars = c(&quot;region&quot;, &quot;type&quot;),
+             variable.name = &quot;period&quot;,
+             value.name = &quot;n&quot;)
+dicu &lt;- within(dicu, period &lt;- gsub(&quot;period_&quot;, &quot;&quot;, period))
+dicu &lt;- within(dicu, period &lt;- gsub(&quot;_&quot;, &quot;-&quot;, period))
+
+dotplot(type ~ n | region, data = dicu,
+        layout = c(1, 6),
+        groups = period,
+        pch = c(1, 3),
+        col = &quot;black&quot;,
+        cex = 1.2,
+        key = list(space = &quot;right&quot;,
+                   text = list(c(&quot;1994-1999&quot;, &quot;2004-2009&quot;)),
+                   points = list(pch = c(1, 3), col = &quot;black&quot;)),
+        main = list(label = &quot;Quy mô dân số nhập cư, xuất cư các vùng,\nso sánh 1994-1999 và 2004-2009&quot;,
+                    cex = 1),
+        xlab = NULL,
+        par.settings = list(grid.pars = list(fontfamily = &quot;Lato&quot;)))</code></pre>
