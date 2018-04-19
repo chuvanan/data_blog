@@ -1,0 +1,40 @@
+---
+title: 'Rstudio Addins '
+author: An Chu
+date: '2018-03-31'
+slug: rstudio-addins
+categories:
+  - R
+tags:
+  - R
+---
+
+I'm going to build an add-in for my team to view and deploy R scripts/reports
+from/to remote server.
+
+Here's a couple of sources for doing research.
+
+Official documentation:
+
+* https://rstudio.github.io/rstudioaddins/
+
+* http://shiny.rstudio.com/articles/gadgets.html
+
+* http://shiny.rstudio.com/articles/gadget-ui.html
+
+* https://www.rstudio.com/resources/webinars/understanding-add-ins/
+
+* https://channel9.msdn.com/Events/useR-international-R-User-conference/useR2016/Shiny-Gadgets-Interactive-tools-for-Programming-and-Data-Analysis
+
+* https://www.rstudio.com/resources/webinars/shiny-gadgets-interactive-tools/
+
+
+Learning more about `rstudioapi` will also be helpful:
+
+* https://cran.rstudio.com/web/packages/rstudioapi/index.html
+
+Cool things other people did:
+
+* https://dracodoc.github.io/2016/08/10/rstudio-addin/
+
+* https://github.com/daattali/addinslist (thanks Dean Attlati)
