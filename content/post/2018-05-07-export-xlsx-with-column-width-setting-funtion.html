@@ -1,0 +1,28 @@
+---
+title: Export xlsx with column width setting funtion
+author: An Chu
+date: '2018-05-07'
+slug: export-xlsx-with-column-width-setting-funtion
+categories: []
+tags:
+  - R
+---
+
+
+
+<p>I came across this <a href="https://rickpackblog.wordpress.com/2018/04/25/openxlsx-r-pkg-column-width-setting-when-auto-not-sufficient/">post</a> while reading <a href="https://rweekly.org/">rweekly.org</a>. Our team at RTA also used <a href="https://github.com/awalker89/openxlsx">openxlsx</a> as core engine for exporting data in Excel format from a shiny app. IMHO, this is one of the best R packages for creating <code>.xlsx</code> files, which achieves both performance and friendly user interface.</p>
+<p>Regarding the question on <a href="https://stackoverflow.com/questions/45860085/r-autofit-excel-column-width/50006932#50006932">SO</a> about autofit Excel column width. I had a slightly different version than Rick Pack’s implementation. I think Rick’s use of <code>pmax()</code> is a bit more elegant than <code>mapply()</code> while our’s function <code>count_char()</code> is nicer than <code>apply()</code>.</p>
+<pre class="r"><code>set_column_widths &lt;- function(wb, sheet, x) {
+    count_char &lt;- function(s) sapply(s, function(x) {
+        x &lt;- as.character(x)
+        x[is.na(x)] &lt;- &quot;&quot;
+        max(nchar(x), na.rm = TRUE)
+    })
+    cols_width &lt;- count_char(x)
+    colnames_width &lt;- count_char(names(x))
+    cols_width &lt;- mapply(max, cols_width, colnames_width,
+                         MoreArgs = list(na.rm = TRUE))
+    openxlsx::setColWidths(wb = wb, sheet = sheet,
+                           cols = seq_along(cols_width),
+                           widths = cols_width)
+}</code></pre>
