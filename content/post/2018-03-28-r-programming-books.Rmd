@@ -11,36 +11,65 @@ tags:
 
 I've recently realized that I am on the transitional phase from R user to R programmers.
 A couple of years ago, there's an article on Revolution Analtics blog saying that
-it take 10 years of experience to become a R developer. I was a novice then, and 
+it take 10 years of experience to become a R developer. I was a novice then, and
 never image that I would become a R developer someday.
 
-Now it's time for booting up my R skills to a next level, so I was doing some 
-literature review to learn more about the language, not only the usage of the language. 
+Now it's time for booting up my R skills to a next level, so I was doing some
+literature review to learn more about the language, not only the usage of the language.
 Here's a list of essential books about R programming, ranking in the order of
 publication date:
 
+Official documentaion:
 
-* R Language Definition, which is useful to know when programming R functions
 
+* **R Language Definition**, which is useful to know when programming R functions
 
-* R Internals, a guide to the internal structures of R and coding standards for the core team
+* **R Internals**, a guide to the internal structures of R and coding standards for
+  the core team
 
-* Writting R Extensions, covers how to create your own packages, write R help files,
-and the foreign language (C, C++, Fortran, ...) interfaces.
+* **Writting R Extensions**, covers how to create your own packages, write R help
+  files, and the foreign language (C, C++, Fortran, ...) interfaces.
 
-* Programming with Data (1998), John Chambers: This “Green Book” describes version 4 of S,
-a major revision of S designed by John Chambers to improve its usefulness at every stage of the programming process.
+Classic books:
 
-* S Programming (2000), W. N. Venables, B. D. Ripley: This provides an in-depth guide to writing software in the S language which forms the basis of both the commercial S-Plus and the Open Source R data analysis software systems.
+* **Programming with Data** (1998), John Chambers: This “Green Book” describes
+  version 4 of S, a major revision of S designed by John Chambers to improve its
+  usefulness at every stage of the programming process.
 
-* Software for Data Analysis - Programming with R (2008), John Chambers: The R version of S4 and other R techniques. This book guides the reader in programming with R, from interactive use and writing simple functions to the design of R packages and intersystem interfaces.
+* **S Programming** (2000), W. N. Venables, B. D. Ripley: This provides an in-depth
+  guide to writing software in the S language which forms the basis of both the
+  commercial S-Plus and the Open Source R data analysis software systems.
 
-* R Programming for Bioinformatics (2008), Robert Gentleman: Thanks to its data handling and modeling capabilities and its flexibility, R is becoming the most widely used software in bioinformatics. R Programming for Bioinformatics builds the programming skills needed to use R for solving bioinformatics and computational biology problems.
+* **Software for Data Analysis - Programming with R** (2008), John Chambers: The R
+  version of S4 and other R techniques. This book guides the reader in
+  programming with R, from interactive use and writing simple functions to the
+  design of R packages and intersystem interfaces.
 
-* The Art of R Programming (2011), Norman Matloff: The Art of R Programming takes you on a guided tour of software development with R, from basic types and data structures to advanced topics like closures, recursion, and anonymous functions. No statistical knowledge is required, and your programming skills can range from hobbyist to pro.
+Recent books:
 
-* The R Inferno (2012), Patrick Burns: If you are using R and you think you’re in hell, this is a map for you. A book about trouble spots, oddities, traps, glitches in R. Many of the same problems are in S+.
+* **R Programming for Bioinformatics** (2008), Robert Gentleman: Thanks to its data
+  handling and modeling capabilities and its flexibility, R is becoming the most
+  widely used software in bioinformatics. R Programming for Bioinformatics
+  builds the programming skills needed to use R for solving bioinformatics and
+  computational biology problems.
 
-* Advanced R (2014), Hadley Wichkham: The book is designed primarily for R users who want to improve their programming skills and understanding of the language. It should also be useful for programmers coming to R from other languages, as it explains some of R’s quirks and shows how some parts that seem horrible do have a positive side.
+* **The Art of R Programming** (2011), Norman Matloff: The Art of R Programming
+  takes you on a guided tour of software development with R, from basic types
+  and data structures to advanced topics like closures, recursion, and anonymous
+  functions. No statistical knowledge is required, and your programming skills
+  can range from hobbyist to pro.
 
-* Extending R (2016), John M. Chambers: This book covers key concepts and techniques in R to support analysis and research projects. It presents the core ideas of R, provides programming guidance for projects of all scales, and introduces new, valuable techniques that extend R.
+* **The R Inferno** (2012), Patrick Burns: If you are using R and you think you’re
+  in hell, this is a map for you. A book about trouble spots, oddities, traps,
+  glitches in R. Many of the same problems are in S+.
+
+* **Advanced R** (2014), Hadley Wichkham: The book is designed primarily for R users
+  who want to improve their programming skills and understanding of the
+  language. It should also be useful for programmers coming to R from other
+  languages, as it explains some of R’s quirks and shows how some parts that
+  seem horrible do have a positive side.
+
+* **Extending R** (2016), John M. Chambers: This book covers key concepts and
+  techniques in R to support analysis and research projects. It presents the
+  core ideas of R, provides programming guidance for projects of all scales, and
+  introduces new, valuable techniques that extend R.
