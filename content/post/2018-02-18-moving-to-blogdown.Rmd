@@ -9,10 +9,12 @@ I have used several blogging plattforms over the years, but none of them made me
 satisfied. The most recent one is jekyll which is good for most of my demands
 but it's somewhat buggy. And I hate dealing with Ruby's dependencies.
 
-
 I've now moved to `blogdown`, a new platform for static site blogging created by
 Yihui Xie - author of the some popular R packages: `knitr`, `bookdown`, etc.
 
-
 I've heard about this project since its early days and my first impression was
-pretty good. `blogdown` is now mature, it's time for me.
+pretty good. `blogdown` is now mature, so it's the right time to make a move.
+
+PS: Yihui Xie had a great [post](https://yihui.name/en/2018/02/career-crisis/)
+on how he overcome procrastination crisis and turned 'side projects'
+(i.e. `knitr`, `blogdown`, ...) into success.
