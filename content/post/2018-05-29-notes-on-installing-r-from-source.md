@@ -15,7 +15,7 @@ repository maintainers are way too late to get the binary up and running. I did
 not blame their decent voluntary works, I just can't wait to try out new
 features and improvements. Also, I've read some good
 [things](https://unix.stackexchange.com/questions/152346/what-is-the-difference-between-building-from-source-and-using-an-install-package)
-about building software from source, so this is a chance to boot up my technical
+about building software from source, so this is a chance to boost up my technical
 expertise.
 
 The installation process was actually not so hard as I thought. But it still
