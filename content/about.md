@@ -8,6 +8,7 @@ date: "2016-05-05T21:48:51-07:00"
 [#rstats](https://twitter.com/search?vertical=default&q=%23rstats&src=typd) enthusiast.
 [@emacs](https://twitter.com/emacs) fan.
 [@RTA](https://cms.rta.vn/).
+[@CV](https://www.dropbox.com/s/vwfd3spql24arbr/anchu.pdf?dl=0)
 
 
 # Talks
