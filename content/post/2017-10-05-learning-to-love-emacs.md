@@ -100,10 +100,10 @@ using only your keyboard. They're optimized for editing text, and once you
 master them, you can edit text very efficiently in any language.
 
 The best thing about Emacs might be Elisp (or Emacs Lisp), a dialect of Lisp
-programming language. Except for its core which are written in C for
-efficiency's sake, Emacs was built entirely upon Elisp. Every feature is
-actually an Elisp function, and you can write your own functions (extensions) to
-Emacs which means everything can be tailored to your needs. For example:
+programming language. Except for its core which is written in C for efficiency's
+sake, Emacs was built entirely upon Elisp. Every feature is actually an Elisp
+function, and you can write your own functions (extensions) to Emacs that means
+everything can be tailored to your needs. For example:
 
 ```lisp
 (defun anchu/insert-named-comment (cmt)
