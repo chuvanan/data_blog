@@ -12,7 +12,7 @@ tags:
 
 Lately, I decided to install R version 3.5.0 from source because the Ubuntu's R
 repository maintainers are way too late to get the binary up and running. I did
-not blame their decent voluntary works, I just can't wait to try out new
+not complain about their decent voluntary works, I just can't wait to try out new
 features and improvements. Also, I've read some good
 [things](https://unix.stackexchange.com/questions/152346/what-is-the-difference-between-building-from-source-and-using-an-install-package)
 about building software from source, so this is a chance to boost up my technical
@@ -24,7 +24,7 @@ what follows, I note down some issues which I encountered during the process.
 
 * R failed to recognize **tcltk** capability even though I have **tcl** and
   **tk** installed and up-to-date on my machine. I skipped this immediately
-  because I never do GUI programming in R.
+  because I hardly ever do GUI programming in R.
 
 * R declined to activate cairo graphics engine despite that capability check
   returned `TRUE`. After three minutes searching around the Web, I found a quick
