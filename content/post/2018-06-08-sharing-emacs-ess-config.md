@@ -1,5 +1,5 @@
 ---
-title: Sharing Emacs ESS config
+title: Sharing Emacs ESS configs
 author: An Chu
 date: '2018-06-08'
 slug: sharing-emacs-ess-config
