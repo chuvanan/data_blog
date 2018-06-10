@@ -22,7 +22,7 @@ I still remember my early days trying to turn Emacs into a fully functional IDE
 for R programming as a replacement for RStudio. I did have to search for a lot
 of Emacs init files, just to find out about functionalities equivalent to
 RStudo's ones, namely the Knit button, syntax highlighting for RMarkdown
-document, etc.
+document, etc. It was a frustrating experience, honestly.
 
 The fact is that, while ESS is a great package for coding R (and other
 statistical languages), it's not yet a friendly environment to beginners. This
@@ -33,5 +33,7 @@ is, indirectly, [said](http://ess.r-project.org/) by ESS's authors:
 > statistical analysis scripts, with various statistical languages/programs, or
 > with different operating systems might benefit from it the most._
 
+There're many ways to improve the situation, and McBain's project is definitely
+a good first step. Kudos to him.
 
 PS: Guess who made that first PR?
