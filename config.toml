@@ -26,17 +26,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     description = "There is no safety in numbers, or in anything else."
     footer = "&copy; An Chu 2017 -- 2018 | Theme: [hugo-xmin](https://github.com/yihui/hugo-xmin) | Built by [blogdown](https://github.com/rstudio/blogdown)"
 
-    # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = "9.12.0"
-    highlightjsCDN = "//cdn.bootcss.com"
-    highlightjsLang = ["r", "yaml", "lisp"]
-    highlightjsTheme = "zenburn"
-
-    MathJaxCDN = "//cdn.bootcss.com"
-    MathJaxVersion = "2.7.1"
-
-    [params.logo]
-    url = "emacs-logo.png"
-    width = 50
-    height = 50
-    alt = "Logo"
+    highlightjsCDN = "//cdnjs.cloudflare.com"
+    highlightjsLang = ["r", "yaml", "lisp", "bash"]
+    highlightjsTheme = "github"
