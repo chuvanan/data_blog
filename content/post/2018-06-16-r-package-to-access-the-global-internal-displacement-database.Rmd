@@ -30,7 +30,7 @@ gave me a result of a data set about Vietnam's Internally Displaced Persons
 disasters. It seems good for analysis, let see if there's something else. It
 turns out that
 [IDMC](http://www.internal-displacement.org/internal-displacement), the data
-contributor, maintains a database of worldwide country profiles of IDPS and
+contributor, maintains a database of worldwide country profiles of IDPs and
 their team are kind enough to provide [REST
 API](https://github.com/idmc-labs/IDMC-Platform-API) for public access. So I
 asked myself why not build an R package for this. And here your are:
