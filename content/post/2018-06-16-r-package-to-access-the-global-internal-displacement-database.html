@@ -1,0 +1,81 @@
+---
+title: R package to access the Global Internal Displacement Database
+author: An Chu
+date: '2018-06-16'
+slug: r-package-to-access-the-global-internal-displacement-database
+categories: []
+tags:
+  - API
+---
+
+
+
+<p>This package <a href="https://github.com/chuvanan/idmcapi"><code>idmcapi</code></a> happens to be my first and complete attempt to write an API package with R. Many <a href="https://ropensci.org/packages/">people</a> do that, and good practices <a href="https://ropensci.org/blog/2014/04/14/webapis/">persist</a>. And I was submitting the package on CRAN. It’s probably that it won’t have a large number of users; it’s fine, because it’s not my initial intention at all.</p>
+<p>I came up with the project last night while I was looking for a ‘cool’ data set for the next DataTalk <a href="http://www.geekvn.club/datatalk-1-10-06-2018/">meetup</a>. DuckDuckGo led me to this site - <a href="https://data.humdata.org/">The Humanitarian Data Exchange</a> - a platform for sharing humanitarian data. You should definitely take a loot at that site if you are passionate about doing <a href="http://www.datakind.org/do-good-with-data/">good</a> with data.</p>
+<p>My first <a href="https://data.humdata.org/search?q=vietnam&amp;ext_page_size=25">search</a> gave me a result of a data set about Vietnam’s Internally Displaced Persons (IDPs) who are forced to flee their homes because of conflict, violence and disasters. It seems good for analysis, let see if there’s something else. It turns out that <a href="http://www.internal-displacement.org/internal-displacement">IDMC</a>, the data contributor, maintains a database of worldwide country profiles of IDPS and their team are kind enough to provide <a href="https://github.com/idmc-labs/IDMC-Platform-API">REST API</a> for public access. So I asked myself why not build an R package for this. And here your are:</p>
+<pre class="r"><code>devtools::install_github(&quot;chuvanan/idmcapi&quot;)</code></pre>
+<p>It covers all of the public API endpoints:</p>
+<ul>
+<li><code>get_countries</code>: Returns a list of countries in the database</li>
+<li><code>get_overview</code>: Returns a country displacement information, including population and refugee numbers</li>
+<li><code>get_conflict_data</code>: Returns all available conflict displacement data</li>
+<li><code>get_disaster_data</code>: Returns all available disaster displacement data by event and includes hazard type information</li>
+<li><code>get_aggregated_disaster_data</code>: Returns all available disaster displacement data by country aggregating all the events</li>
+<li><code>get_displacement_data</code>: Returns all available displacement data for both disaster and conflict by year and country</li>
+<li><code>get_strata_data</code>: Returns the strata data for a country by type of displacement and fact type</li>
+<li><code>get_figure_analysis</code>: Returns the figure analysis for a country</li>
+<li><code>get_confidence_assessment</code>: Returns the confidence assessment data for a country by type of displacement and fact type</li>
+<li><code>get_disaster_events</code>: Returns events associated with an ISO code</li>
+</ul>
+<p>Here’s a bit of it in action:</p>
+<pre class="r"><code>get_countries()          # output truncated
+
+#     iso3                       geo_name
+# 1    AB9                     Abyei Area
+# 2    AFG                    Afghanistan
+# 3    ALB                        Albania
+# 4    DZA                        Algeria
+# 5    AGO                         Angola
+# 6    AIA                       Anguilla
+# 7    ATG            Antigua and Barbuda
+# 8    ARG                      Argentina
+# 9    ARM                        Armenia
+# 10   AUS                      Australia</code></pre>
+<pre class="r"><code>get_overview(&#39;VNM&#39;)
+
+#                               fields                       values
+# 1                               iso3                          VNM
+# 2                           geo_name                      Vietnam
+# 3                  population.figure                     95414640
+# 4                    population.year                         2017
+# 5                  population.source       UN Population Division
+# 6                     refugee.figure                       329331
+# 7                       refugee.year                         2016
+# 8                     refugee.source                        UNHCR
+# 9                    conflict.source                         IDMC
+# 10                     disaster.year                         2017
+# 11        disaster.new_displacements                       633463
+# 12  disaster.new_displacements_since 1 January - 31 December 2017
+# 13 disaster.new_displacements_source                         IDMC
+# 14                   disaster.source                         IDMC</code></pre>
+<pre class="r"><code>get_confict_data(iso3 = &#39;RUS&#39;, year = 2015)
+
+#   iso3 iso           geo_name year stock_displacement stock_displacement_source new_displacements
+# 1  RUS  RU Russian Federation 2015              26607                      IDMC                 0
+#   new_displacements_source
+# 1                     IDMC
+
+get_confict_data(iso3 = &#39;RUS&#39;, year = c(2011, 2015))
+
+#   iso3 iso           geo_name year stock_displacement_source new_displacements new_displacements_source
+# 1  RUS  RU Russian Federation 2011                      IDMC                 0                     IDMC
+# 2  RUS  RU Russian Federation 2012                      IDMC                 0                     IDMC
+# 3  RUS  RU Russian Federation 2013                      IDMC                 0                     IDMC
+# 4  RUS  RU Russian Federation 2014                      IDMC                 0                     IDMC
+# 5  RUS  RU Russian Federation 2015                      IDMC                 0                     IDMC
+#   stock_displacement
+# 1                 NA
+# 2              29000
+# 3              34900
+# 4              25378
+# 5              26607</code></pre>
