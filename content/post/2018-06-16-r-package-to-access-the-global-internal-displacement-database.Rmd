@@ -33,7 +33,7 @@ turns out that
 contributor, maintains a database of worldwide country profiles of IDPs and
 their team are kind enough to provide [REST
 API](https://github.com/idmc-labs/IDMC-Platform-API) for public access. So I
-asked myself why not build an R package for this. And here your are:
+asked myself why not build an R package for this. And here you are:
 
 ```{r, eval=FALSE}
 devtools::install_github("chuvanan/idmcapi")
