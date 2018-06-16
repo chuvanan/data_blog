@@ -3,7 +3,7 @@ title: "About"
 ---
 
 
-[Data nerd](https://www.linkedin.com/in/anchuvan/).
+[Data](https://www.linkedin.com/in/anchuvan/) nerd.
 [#rstats](https://twitter.com/search?vertical=default&q=%23rstats&src=typd) enthusiast.
 [@emacs](https://twitter.com/emacs) fan.
 [@RTA](https://cms.rta.vn/).
