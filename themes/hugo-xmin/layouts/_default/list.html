@@ -1,8 +1,17 @@
 {{ partial "header.html" . }}
 
-{{if not .IsHome }}
-<h1>{{ .Title }}</h1>
+{{if .IsHome }}
+
+<h1 class="article-meta">{{ .Title }}</h1>
+
+{{ .Content }}
+
 {{ end }}
+
+
+{{if not .IsHome}}
+
+<h1 class="article-meta">{{ .Title }}</h1>
 
 {{ .Content }}
 
@@ -14,5 +23,7 @@
   </li>
   {{ end }}
 </ul>
+
+{{ end}}
 
 {{ partial "footer.html" . }}
