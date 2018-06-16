@@ -1,6 +1,5 @@
 ---
 title: "About"
-date: "2016-05-05T21:48:51-07:00"
 ---
 
 
@@ -11,12 +10,12 @@ date: "2016-05-05T21:48:51-07:00"
 [@CV](https://www.dropbox.com/s/vwfd3spql24arbr/anchu.pdf?dl=0)
 
 
-# Softwares
+## Softwares
 
 * [idmcapi](https://github.com/chuvanan/idmcapi): A R client for the Global
   Internal Displacement Database API.
 
-# Talks
+## Talks
 
 * [Hanoi UseR! Meetup 04/2017](https://speakerdeck.com/chuvanan/intro-vis)
 
