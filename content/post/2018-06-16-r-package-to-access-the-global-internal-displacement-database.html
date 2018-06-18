@@ -58,14 +58,14 @@ tags:
 # 12  disaster.new_displacements_since 1 January - 31 December 2017
 # 13 disaster.new_displacements_source                         IDMC
 # 14                   disaster.source                         IDMC</code></pre>
-<pre class="r"><code>get_confict_data(iso3 = &#39;RUS&#39;, year = 2015)
+<pre class="r"><code>get_conflict_data(iso3 = &#39;RUS&#39;, year = 2015)
 
 #   iso3 iso           geo_name year stock_displacement stock_displacement_source new_displacements
 # 1  RUS  RU Russian Federation 2015              26607                      IDMC                 0
 #   new_displacements_source
 # 1                     IDMC
 
-get_confict_data(iso3 = &#39;RUS&#39;, year = c(2011, 2015))
+get_conflict_data(iso3 = &#39;RUS&#39;, year = c(2011, 2015))
 
 #   iso3 iso           geo_name year stock_displacement_source new_displacements new_displacements_source
 # 1  RUS  RU Russian Federation 2011                      IDMC                 0                     IDMC
