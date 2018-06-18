@@ -28,10 +28,10 @@ The fact is that, while ESS is a great package for coding R (and other
 statistical languages), it's not yet a friendly environment to beginners. This
 is, indirectly, [said](http://ess.r-project.org/) by ESS's authors:
 
-> _Although all users of these statistical analysis programs are welcome to
+> Although all users of these statistical analysis programs are welcome to
 > apply ESS, advanced users or professionals who regularly work with text-based
 > statistical analysis scripts, with various statistical languages/programs, or
-> with different operating systems might benefit from it the most._
+> with different operating systems might benefit from it the most.
 
 There're many ways to improve the situation, and McBain's project is definitely
 a good first step. Kudos to him.
