@@ -52,7 +52,7 @@ pollution and how it changes for different months.
 
 * This visualization is by no means a truly original work of mine. It is
   inspired by the master piece in Edward Tufte's *The Visual Display of
-  Quantitative Information* (page 30), and is a adaption of Brad Boehmke's
+  Quantitative Information* (page 30), and is an adaption of Brad Boehmke's
   *[Daytons's Weather in 2014](http://rpubs.com/bradleyboehmke/weather_graphic)*
 
 * I used data from the U.S. Embassy Hanoi Air Quality
