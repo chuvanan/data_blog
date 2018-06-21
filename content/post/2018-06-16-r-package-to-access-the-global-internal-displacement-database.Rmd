@@ -10,11 +10,12 @@ tags:
 
 
 This package [`idmcapi`](https://github.com/chuvanan/idmcapi) happens to be my
-first and complete attempt to write an API package with R. Many
-[people](https://ropensci.org/packages/) do that, and good practices
-[persist](https://ropensci.org/blog/2014/04/14/webapis/). And I was submitting
-the package on CRAN. It's probably that it won't have a large number of users;
-it's fine, because it's not my initial intention at all.
+first and complete attempt to write an API package with R. And I was submitting
+the package on CRAN. [Many](https://ropensci.org/packages/) in R community have
+done that, and I've learnt a ton of good
+[practices](https://ropensci.org/blog/2014/04/14/webapis/) from them. It's
+probably that `idmcapi` won't have a large number of users; that's fine, because
+it's not my initial intention at all.
 
 I came up with the project last night while I was looking for a 'cool' data set
 for the next DataTalk
