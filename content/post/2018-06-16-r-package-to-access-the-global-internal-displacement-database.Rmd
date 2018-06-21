@@ -18,7 +18,7 @@ it's fine, because it's not my initial intention at all.
 
 I came up with the project last night while I was looking for a 'cool' data set
 for the next DataTalk
-[meetup](http://www.geekvn.club/datatalk-1-10-06-2018/). DuckDuckGo led me to
+[meetup](http://www.geekvn.club/datatalk-1-10-06-2018/). DuckDuckGo sent me to
 this site - [The Humanitarian Data Exchange](https://data.humdata.org/) - a
 platform for sharing humanitarian data. You should definitely take a loot at
 that site if you are passionate about doing
