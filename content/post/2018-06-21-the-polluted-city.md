@@ -23,27 +23,29 @@ img {
 
 </style>
 
-Hanoi, the capital of Vietnam, is infamous for many things, say chronic traffic
-jams, insanely high property prices or poor food safety. And, to make the list a
-bit longer, the city is reaching an alarming level of [air
+Hanoi, my home city, is infamous for many things, say chronic traffic jams,
+insanely high property prices or poor food safety. And now, to make the list a
+bit longer, the city was reaching an alarming level of [air
 pollution](https://e.vnexpress.net/news/insight/air-pollution-in-hanoi-reaches-alarming-levels-3364977.html).
 
-Indeed, the phenomenon might have occurred for years. But recent open data, from
-both [individuals](http://www.aqivn.org/vi/) and
+Indeed, the phenomenon might have occurred for years. But recent data, from both
+[individuals](http://www.aqivn.org/vi/) and
 [agencies](https://vn.usembassy.gov/air-quality-monitor/), has provided
-empirical evidences for, and raised public concerns over the city's degrading
+empirical evidences for, and raised public concerns over the capital's degrading
 air quality. Some
 [records](https://saigoneer.com/saigon-health/8196-hanoi-s-air-quality-ranked-second-worst-in-the-world-yesterday)
 revealed that Hanoi's outdoor pollution was on a par with the world's most
 polluted cities in India and China. These figures should frighten its citizens
 as
 [WHO](https://www.weforum.org/agenda/2018/05/these-are-the-worlds-most-polluted-cities)
-said that polluted air contributed to a quarter of deaths from heart disease,
-stroke and lung cancer which kills 7 million people each year.
+said that polluted air contributes to a quarter of 7 million deaths from heart
+disease, stroke and lung cancer each year.
 
+While we need more rigorous
+[research](http://tapchi.vnu.edu.vn/upload/2014/04/1306/1%2Epdf) and integrated
+monitoring systems
 
 ![air-quality](/post/img/2018-06-21-the-polluted-city/the-polluted-city.png)
-
 
 ### Notes
 
