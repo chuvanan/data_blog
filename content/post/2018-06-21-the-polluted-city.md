@@ -8,19 +8,6 @@ tags:
   - data viz
 ---
 
-<style>
-
-img {
-    max-width: 1800px;
-    display: block;
-    margin-left: -500px;
-    margin-right: 0px;
-    position: relative;
-    border: 1px solid #ddd;
-    box-shadow: 5px 5px 5px #eee;
-}
-
-</style>
 
 Hanoi, my home city, is infamous for many things, say chronic traffic jams,
 insanely high property prices or poor food safety. And now, to make the list a
@@ -46,7 +33,44 @@ data obtained from U.S. Embassy where they have a monitoring station located in
 downtown Hanoi. The chart below shows a picture of the city's daily outdoor air
 pollution and how it changes for different months.
 
-![air-quality](/post/img/2018-06-21-the-polluted-city/the-polluted-city.png)
+
+<style>
+#myImg:hover {opacity: 0.7;}
+</style>
+
+<img id="myImg" src="/post/img/2018-06-21-the-polluted-city/the-polluted-city.png" alt="Hanoi, the polluted city" width="800">
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">×</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+</script>
+
+<!-- ![air-quality](/post/img/2018-06-21-the-polluted-city/the-polluted-city.png) -->
 
 ### Notes
 
