@@ -1,0 +1,63 @@
+---
+title: Make your own QR code generator with Shiny
+author: An Chu
+date: '2018-05-08'
+slug: make-your-own-qr-code-generator-app-with-shiny
+categories: []
+tags:
+  - shiny
+  - R
+draft: true
+---
+
+QR code is a great design, especially when we consider its initial
+[purpose](http://www.qrcode.com/en/history/), which was a replacement of linear
+barcodes to be able to store more Japanese characters in term of both quantiy
+and type. These days, the two-dimensional barcode developed by DENSO WAVE, a
+Japanese automotive manufacturer, has been widely
+[adopted](https://a16z.com/2017/08/11/qr-codes-in-china/) in many industries,
+notably manufacturing, marketing, online payment, and that goes well beyond
+creator's intention.
+
+At [RTA](https://cms.rta.vn/), we utilize QR code at many places, from verifying
+employee's daily check-in check-out to storing and retrieving company's
+assets. Equally important, it makes our mobile-based solution to food tracking
+system feasible. Given that needs, we all agree to build a comprehensive service
+to generate, distribute and archive QR codes. In what follows, I will talk about
+the first part which is creating a web-based QR code generator with the
+excellent [Shiny](https://shiny.rstudio.com/) package.
+
+### From string to QR code
+
+Let's start with a simple use case: turning a string into a QR code. In the R
+world, you can (safely) assume that there might be someone else already did
+that. Well, it's true. Bob Rudis, a prolific R blogger, has done a terrific job
+with package [`qrencoder`](https://github.com/hrbrmstr/qrencoder), bridging R
+interface to `libqrencode` - a high performance C library for matrix barcode
+generation. To demonstrate, I copy a toy example as follows:
+
+```{r, eval=FALSE}
+## devtools::install_github("hrbrmstr/qrencoder")
+library(qrencoder)
+par(mar=c(0,0,0,0))
+image(qrencode_raster("QRCODE"),
+      asp=1, col=c("white", "black"), axes=FALSE,
+      xlab="", ylab="")
+```
+
+Basically, there are two things happened. Under the hood, the C library carried
+out the heavy work of encoding the string to a matrix of zeroes and ones (the
+encoding method is out of scope of this post, see
+[here](https://www.thonky.com/qr-code-tutorial/data-encoding) for details). Then
+R in turn ploted the matrix as an image of (seemingly) disordered black square
+boxes.
+
+Making one or a few custom QR codes in R as above might be an overkill because
+there're hundreds of
+[online](https://duckduckgo.com/?q=online+qrcode+generator+&t=lm&ia=web) tools
+for that. Usually, we want to produce a large number randomly unique QR codes to
+differentiate thousands of items or processes, and it must also be easy to
+layout for printing. So we need an interface for the task and Shiny is our go-to
+choice.
+
+### Generate random strings
