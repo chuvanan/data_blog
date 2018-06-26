@@ -38,7 +38,7 @@ pollution and how it changes for different months.
 #myImg:hover {opacity: 0.7;}
 </style>
 
-<img id="myImg" src="/post/img/2018-06-21-the-polluted-city/the-polluted-city.png" alt="Hanoi, the polluted city" width="800">
+<img id="myImg" src="/post/img/2018-06-21-the-polluted-city/the-polluted-city-v2.png" alt="Hanoi, the polluted city" width="800">
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
