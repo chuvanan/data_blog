@@ -11,13 +11,12 @@ draft: true
 ---
 
 QR code is a great design, especially when we consider its initial
-[purpose](http://www.qrcode.com/en/history/), which was a replacement of linear
-barcodes to be able to store more Japanese characters in term of both quantiy
-and type. These days, the two-dimensional barcode developed by DENSO WAVE, a
-Japanese automotive manufacturer, has been widely
-[adopted](https://a16z.com/2017/08/11/qr-codes-in-china/) in many industries,
-notably manufacturing, marketing, online payment, and that goes well beyond
-creator's intention.
+[purpose](http://www.qrcode.com/en/history/) which was designed as a replacement
+of linear barcodes - a storage medium of commodity prices in supermarkets. These
+days, the two-dimensional barcode has been widely
+[adopted](https://a16z.com/2017/08/11/qr-codes-in-china/) in many other
+industries, notably manufacturing, marketing, online payment, and that goes well
+beyond its creator's intention.
 
 At [RTA](https://cms.rta.vn/), we utilize QR code at many places, from verifying
 employee's daily check-in check-out to storing and retrieving company's
@@ -45,19 +44,97 @@ image(qrencode_raster("QRCODE"),
       xlab="", ylab="")
 ```
 
-Basically, there are two things happened. Under the hood, the C library carried
-out the heavy work of encoding the string to a matrix of zeroes and ones (the
-encoding method is out of scope of this post, see
+Basically, two things happened. First, the C library carried out the heavy work
+of encoding the string to a matrix of zeroes and ones (the encoding method is
+out of scope of this post, see
 [here](https://www.thonky.com/qr-code-tutorial/data-encoding) for details). Then
 R in turn ploted the matrix as an image of (seemingly) disordered black square
-boxes.
+boxes. Thanks to the high level implementation of `image()` (a S4 method of
+class `Raster Layer`), we are kept way from the nitty-gritty of matrix
+manipulation.
 
-Making one or a few custom QR codes in R as above might be an overkill because
+Making only one or a few QR codes in R as above might be an overkill because
 there're hundreds of
 [online](https://duckduckgo.com/?q=online+qrcode+generator+&t=lm&ia=web) tools
-for that. Usually, we want to produce a large number randomly unique QR codes to
-differentiate thousands of items or processes, and it must also be easy to
-layout for printing. So we need an interface for the task and Shiny is our go-to
-choice.
+for doing that. Usually, we want to produce a large number of randomly unique QR
+codes in order to differentiate thousands of items or processes, and it must
+also be easy to layout those barcodes for printing. This is when Shiny comes to
+help.
 
 ### Generate random strings
+
+To make random strings, I'm going to prepare data and design an interface for
+those inputs. The first part, the data, can be constructed from a list of
+alphanumeric characters. Besides, we'll have two options to decide the length
+(in characters) and the number of of strings to be generated. The second part,
+the UI, for illustrative purpose, I'll embed Shiny components (widgets) in an R
+Markdown file to create the UI.
+
+```{r, eval=FALSE}
+upcase_letters <- LETTERS
+locase_letters <- letters
+digits <- 0:9
+minus <- "-"
+underscore <- "_"
+space <- " "
+special_char <- c("!", "@", "#", "$", "%", "^", "&", "*", "?", "/", "|", ",",
+                  ".", ";", ":", "+")
+brackets <- c("{", "}", "[", "]", "(", ")", "<", ">")
+char_set <- list(upcase_letters, locase_letters, digits, minus, underscore,
+                 space, special_char, brackets)
+```
+
+For example, the following codes create two Shiny widgets.
+
+```{r, eval=FALSE}
+fluidRow(
+    column(
+        width = 6,
+        checkboxInput(
+            inputId = "upcase_ip",
+            label = "Upper-case (A, B, C,...)",
+            value = TRUE
+        ),
+        checkboxInput(
+            inputId = "locase_ip",
+            label = "Lower-case (a, b, c,...)",
+            value = TRUE
+        ),
+        checkboxInput(
+            inputId = "digit_ip",
+            label = "Digits (0, 1, 2,...)",
+            value = TRUE
+        ),
+        checkboxInput(
+            inputId = "minus_ip",
+            label = "Minus (-)",
+            value = FALSE
+        )
+    ),
+    column(
+        width = 6,
+        checkboxInput(
+            inputId = "underline_ip",
+            label = "Underline (_)",
+            value = FALSE
+        ),
+        checkboxInput(
+            inputId = "space_ip",
+            label = "Space ( )",
+            value = FALSE
+        ),
+        checkboxInput(
+            inputId = "special_ip",
+            label = "Special character (!, $, %,...)",
+            value = FALSE
+        ),
+        checkboxInput(
+            inputId = "brackets_ip",
+            label = "Brackets ([, ], {, },...)",
+            value = FALSE
+        )
+    )
+)
+```
+
+The UI looks like this when rendered:
