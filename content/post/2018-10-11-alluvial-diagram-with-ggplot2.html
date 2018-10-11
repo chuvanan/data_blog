@@ -1,0 +1,57 @@
+---
+title: Alluvial diagram with ggalluvial
+author: An Chu
+date: '2018-10-11'
+slug: alluvial-diagram-with-ggplot2
+categories: []
+tags: []
+---
+
+
+
+<p>Recently, I was tasked to create an alluvial diagram to depict Vietnam’s trade
+data. This chart is a specific type of sankey diagram which visualize
+changes/flow within a system/network and it is particularly useful in
+highlighting dominant contributions to an overall flow.</p>
+<p>I knew there are examples of sankey diagrams using
+<a href="https://plot.ly/r/sankey-diagram/">plotly</a> and
+<a href="https://www.r-graph-gallery.com/sankey-diagram/">networkD3</a> but their ouputs
+did not please me enough. And this is not a trivial task for
+ggplot2. Fortunately, Jason Cory Brunson, author of
+<a href="http://corybrunson.github.io/ggalluvial/">ggalluvial</a> package, has done a great
+job building an abstraction layer over sankey diagram’s elements so that end
+users (me) can take advantage of ggplot2’s syntax.</p>
+<style>
+#myImg:hover {opacity: 0.7;}
+</style>
+<p><img id="myImg" src="/post/img/2018-10-11-alluvial-diagram-with-ggplot2/sankey-diagram.png" alt="Alluvial Diagram" width="800"></p>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+<span class="close">×</span>
+<img class="modal-content" id="img01">
+<div id="caption">
+
+</div>
+</div>
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+</script>
