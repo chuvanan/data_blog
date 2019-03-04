@@ -6,8 +6,8 @@ title: "About"
 [Data nerd](https://www.linkedin.com/in/anchuvan/).
 [#rstats](https://twitter.com/search?vertical=default&q=%23rstats&src=typd) enthusiast.
 [@emacs](https://twitter.com/emacs) fan.
-[@RTA](https://cms.rta.vn/).
-[@CV](https://www.dropbox.com/s/vwfd3spql24arbr/anchu.pdf?dl=0)
+[@SeABank](https://seabank.com.vn/).
+[@CV](https://www.dropbox.com/s/ob4arhubc8ob941/%5BCV%5D%20Chu%20Van%20An.pdf?dl=0)
 
 
 ## Softwares
