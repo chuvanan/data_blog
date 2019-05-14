@@ -6,3 +6,6 @@ code {
   font-family: "Source Code Pro", Monaco, monospace;
   font-size: 85%;
 }
+h1, h2 {
+    font-family: Roboto Condensed;
+}
