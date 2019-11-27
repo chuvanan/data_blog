@@ -1,0 +1,23 @@
+---
+title: Yet another @rdatatable tutorial
+author: An Chu
+date: '2019-11-27'
+slug: yet-another-rdatatable-tutorial
+categories: []
+tags: []
+---
+
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(fig.align = "center", echo = FALSE)
+```
+
+I just wrote a small (cookbook-style) [tutorial](https://github.com/chuvanan/rdatatable-cookbook)
+about using [`data.table`](https://rdatatable.gitlab.io/data.table/) package
+to analyse real-world data. This project is my appreciation of the package which
+[Dirk](https://twitter.com/eddelbuettel/status/1197220691449397249) says it all:
+"there is so much power and beauty in `dt[i, j, by]` and the @rdatatable backend".
+
+```{r, out.width="60%"}
+knitr::include_graphics("/post/img/2019-11-27-yet-another-rdatatable-tutorial/tweet.png")
+```
