@@ -1,6 +1,6 @@
 baseurl = "/"
 languageCode = "en-us"
-title = "An Chu's data blog"
+title = "An Chu's blog"
 theme = "hugo-xmin"
 googleAnalytics = "UA-120197914-1"
 disqusShortname = ""
@@ -23,8 +23,10 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     weight = 3
 
 [params]
-    description = "There is no safety in numbers, or in anything else."
-    footer = "&copy; An Chu 2017 -- 2020 | Theme: [hugo-xmin](https://github.com/yihui/hugo-xmin) | Built by [blogdown](https://github.com/rstudio/blogdown)"
+    # description = "There is no safety in numbers, or in anything else."
+    # footer = "&copy; An Chu 2017 -- 2020 | Theme: [hugo-xmin](https://github.com/yihui/hugo-xmin) | Built by [blogdown](https://github.com/rstudio/blogdown)"
+
+    mainSections = ["posts"]
 
     highlightjsVersion = "9.12.0"
     highlightjsCDN = "//cdnjs.cloudflare.com"
