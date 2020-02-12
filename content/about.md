@@ -10,12 +10,12 @@ title: "About"
 [@CV](https://www.dropbox.com/s/ob4arhubc8ob941/%5BCV%5D%20Chu%20Van%20An.pdf?dl=0)
 
 
-## Softwares
+### Softwares
 
 * [idmcapi](https://github.com/chuvanan/idmcapi): A R client for the Global
   Internal Displacement Database API.
 
-## Talks
+### Talks
 
 * [Hanoi UseR! Meetup 04/2017](https://speakerdeck.com/chuvanan/intro-vis)
 
