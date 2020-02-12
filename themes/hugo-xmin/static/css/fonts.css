@@ -1,11 +1,10 @@
-body {
-    font-family: Roboto, Optima, Candara, Calibri, Helvetica, sans-serif;
-    font-size: 1.05em;
-}
+
+
 code {
-  font-family: "Source Code Pro", Monaco, monospace;
+  font-family: Source Code Pro, Monaco, monospace;
   font-size: 85%;
 }
+
 h1, h2 {
     font-family: Roboto Condensed;
 }

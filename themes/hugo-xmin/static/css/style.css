@@ -3,6 +3,11 @@ body {
   margin: auto;
   padding: 1em;
   line-height: 1.5em;
+  font-family: Nunito Extra Light; sans-serif;
+}
+
+p {
+    margin-bottom: 10px;
 }
 
 /* header and footer areas */
