@@ -1,0 +1,40 @@
+---
+title: Index card
+author: An Chu
+date: '2020-03-02'
+slug: index-card
+categories: []
+tags: []
+---
+
+
+Bối cảnh: tôi có biết đến thuật ngữ `index card` thông qua
+[newsletter](https://commoncog.com/blog/) của Cedric Chin. Cedric là một kỹ sư
+phần mềm, đã có thời gian based ở Sài Gòn. Anh này rất hay đọc và rất hay viết,
+đặc biệt là về chủ đề [career
+moat](https://commoncog.com/blog/career-moats-101/).  Tôi suy nghĩ và có định
+hướng nhiều hơn về công việc, tương lai nghề nghiệp của mình nhờ đọc các bài
+viết của Cedric.
+
+Quay lại chủ đề về index card, Cedric có link một bài điểm
+[sách](https://www.amazon.com/gp/product/B06WVYW33Y) của [Sönke
+Ahrens](https://twitter.com/soenke_ahrens) về cách viết
+[notes](https://fortelabs.co/blog/how-to-take-smart-notes/) một cách thông
+minh. Cơ bản đây là một kỹ thuật đơn giản (chỉ cần bút và giấy ghi chú - gọi là
+index card) đuợc phát minh (?) bởi nhà xã hội học người Đức Niklas
+Luhmann. Luhmann nhận ra rằng một ghi chú (a note) sẽ không có giá trị nếu thiếu
+sự liên kết (context) với các thông tin khác. Mỗi note là một đoạn - một ý
+tưởng - có thể gắn kết với nhau, một 'cơ sở dữ liệu' giúp lưu trữ và tái sử dụng
+như một 'bộ não' thứ hai.
+
+Tôi cũng có thử áp dụng một số nguyên tắc trong bài viết vào thực hành, tuy
+nhiên, vẫn có chút nghi ngờ, vì Luhmann sử dụng kỹ thuật này cách đây cả nửa thế
+kỷ, liệu có còn ai sử dụng nữa không? Cho đến ngày hôm nay, tôi biết đuợc
+GS. Trefethen (Đại học Oxford) đã và đang sử dụng hệ thống note-takings này [50
+năm nay](https://trefethen.net/2020/02/14/50th-anniversary-of-these-notes/). Ông
+còn xuất bản một [cuốn
+sách](https://www.amazon.co.uk/Trefethens-Index-Cards-People-Mathematics/dp/9814360694)
+chứa đựng hơn 40 năm ghi chú. Kinh ngạc và thán phục.
+
+Tôi nhận vấn đề không phải là công nghệ, quan trọng là sự kiên trì và nhất quán
+một cách có hệ thống.
