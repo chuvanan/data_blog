@@ -4,6 +4,16 @@ body {
   padding: 1em;
   line-height: 1.5em;
   font-family: Roboto; sans-serif;
+  /* font-family: Merriweather; */
+  font-size: 16px;
+}
+
+a {
+    font-family: Montserrat;
+}
+
+.date {
+    color: grey;
 }
 
 p {
@@ -16,7 +26,8 @@ p {
 .article-meta, .menu a {
   text-decoration: none;
   /* background: #eee; */
-  font-family: Roboto Condensed;
+  /* font-family: Roboto Condensed; */
+  font-family: Montserrat;
   padding: 5px;
   border-radius: 5px;
 }
