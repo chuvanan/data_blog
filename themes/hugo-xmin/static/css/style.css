@@ -1,15 +1,10 @@
 body {
-  max-width: 800px;
+  max-width: 600px;
   margin: auto;
   padding: 1em;
   line-height: 1.5em;
-  font-family: Roboto; sans-serif;
-  /* font-family: Merriweather; */
+  font-family: ProzaLibre; sans-serif;
   font-size: 16px;
-}
-
-a {
-    font-family: Montserrat;
 }
 
 .date {
@@ -26,8 +21,7 @@ p {
 .article-meta, .menu a {
   text-decoration: none;
   /* background: #eee; */
-  /* font-family: Roboto Condensed; */
-  font-family: Montserrat;
+  font-family: Roboto Condensed;
   padding: 5px;
   border-radius: 5px;
 }
